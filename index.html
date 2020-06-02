@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <head>
+
 <style>
 
+@font-face {
+font-family: 'Nugget Medium';
+font-style: normal;
+font-weight: normal;
+src: local('Nugget Medium'), url('NuggetMed.woff') format('woff');
+}
+
 body {
-	font-family: 'Arial';
+	font-family: myFirstFont;
 	width: 90%;
 	padding-top: 50px;
 	padding-left: 200px;
@@ -11,7 +19,7 @@ body {
 	margin-right: auto;
 	margin-top: 40px;
 	min-height: 500px;
-	background-image: linear-gradient(#444444, #111111);
+	background-image: linear-gradient(to left, #333333, #111111);
 	overflow-x: hidden;
 
 }
@@ -48,17 +56,22 @@ div.box:hover img {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: #111;
+	background-color: linear-gradient(#111111, #333333);
 	padding-top: 5px;
 }
 
-.sidebar a {
-  padding-top: 30px;
+.sidebar-menu {
+  padding-top: 45px;
   padding-left: 15px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #ffffff;
   display: block;
+
+  opacity: 0.5;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .sidebar img {
@@ -66,7 +79,11 @@ div.box:hover img {
 }
 
 .sidebar a:hover {
-	color: #f1f1f1;
+
+	opacity: 1.0;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .bottom {
@@ -78,13 +95,13 @@ div.box:hover img {
 }
 
 .topbar {
-	height: 85px;
+	height: 70px;
 	width:100%;
 	position:fixed;
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: #111;
+	background-color: transparent;
 	overflow: hidden;
 }
 
@@ -93,7 +110,6 @@ div.box:hover img {
   padding: 10px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
 }
 
 .topbar a:hover {
@@ -102,15 +118,33 @@ div.box:hover img {
 
 .topbar-right {
 	float: right;
+	padding-top: 5px;
+	margin-right: 10px;
+}
+
+.topbar p {
+	float: left;
+  font-size: 25px;
+  color: #ffffff;
 }
 
 .topbar input[type=text] {
-	width: 300px;
-  float: right;
+  width: 300px;
+  float: left;
+  margin-left: 200px;
   padding: 6px;
   border: none;
-  margin-top: 8px;
-  margin-right: 750px;
+  margin-top: 16px;
+  font-size: 17px;
+  border-radius: 5px;
+}
+
+.nowplaying {
+	float: left;
+  margin-left: 250px;
+  padding: 6px;
+  border: none;
+  margin-top: 16px;
   font-size: 17px;
   border-radius: 5px;
 }
@@ -139,6 +173,40 @@ div.box:hover img {
   .sidebar a {font-size: 18px;}
 }
 
+.logo {
+	padding: 10px;
+	margin-left: -8px;
+
+	opacity: 1;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.logo:hover {
+	opacity: 0.5;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.logo_link {
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	padding: 5px;
+	margin: -5px;
+}
+
+.search_icon {
+	padding-top: 20px;
+	margin-left: -35px;
+}
+
+.login_register {
+	color: #ffffff;
+}
+
 </style>
 
 </head>
@@ -146,25 +214,35 @@ div.box:hover img {
 <body>
 	<div class="topbar">
 			<div class="topbar-right">
-				<a href="#login">Login</a>
-				<a href="#register">Register</a>
+				<a class ="login_register" href="#login" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Login</a>
+				<a class ="login_register" href="#register" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Register</a>
 			</div>
 
-			<input type="text" placeholder="Search...">
+			<div class="searchbox">
+				<input type="text" placeholder="Search..." style="font-family:'Montserrat'; font-weight:normal;font-size:20px">
+				<img src="Content\Images\Icons\Search Icon.png" class="search_icon" width="25" height="25">
+			</div>
+
+			<div class="nowplaying">
+				<p style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">No music is currently playing.</p>
+			</div>
 
 	</div>
 
 	<div class="sidebar">
-		<img src="Content\Logo\Logo_final.png" alt="logo" width="180" height="80">
-		<a href="#">Profile</a>
-		<a href="#">Likes</a>
-		<a href="#">Explore</a>
-		<a href="#">Genres</a>
+		<a class="logo_link" href="index.html">
+			<img src="Content\Logo\Logo5.png" class="logo" alt="Logo" width="140" height="40">
+		</a>
+
+		<a class="sidebar-menu" href="#" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Profile</a>
+		<a class="sidebar-menu" href="#" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Likes</a>
+		<a class="sidebar-menu" href="#" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Explore</a>
+		<a class="sidebar-menu" href="#" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Genres</a>
 		<div class="bottom" >Copyright @2020</div>
 	</div>
 
 	<div id="body">
-		<h2 class="featuring">Trending Now&ensp;</h2>
+		<h2 class="featuring" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Trending Now&ensp;</h2>
 	</div>
 
 	<div class="box">
@@ -190,7 +268,7 @@ div.box:hover img {
 		<img src="Content\Images\Albums\Taylor Swift - The Man.jpg" alt = "KP" width="150" height = "170"></div>
 
 	<div id="body">
-		<h2 class="artists">Trending Artists&ensp;</h2>
+		<h2 class="artists" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">Trending Artists&ensp;</h2>
 	</div>
 
 	<div class="box">
@@ -210,7 +288,7 @@ div.box:hover img {
 	<div class="box">Abi - pula-n cur</div>
 
 	<div id="body">
-		<h2 class="releases">New Releases&ensp;</h2>
+		<h2 class="releases" style="font-family:'Nugget Medium';font-weight:normal;font-size:23px">New Releases&ensp;</h2>
 	</div>
 
 	<div class="box">Jador - Lasati-o sa bea</div>
